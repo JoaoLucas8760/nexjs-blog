@@ -42,6 +42,7 @@ type Post = {
   refetchmypost: any;
   createdAt: Date;
   updatedAt: Date;
+  userPost: any;
 };
 
 export function Post({
@@ -53,6 +54,7 @@ export function Post({
   refetchmypost,
   createdAt,
   updatedAt,
+  userPost,
 }: Post) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [titleForm, setTitleForm] = useState(title);
@@ -113,7 +115,6 @@ export function Post({
     }
   }
 
-  console.log(title, updatedAt, createdAt);
   return (
     <Box className="gap-2 flex flex-col bg-gray-900 p-4 rounded relative">
       {authorId === user.id && (
@@ -265,14 +266,15 @@ export function Post({
           <ModalHeader>{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Wrap>
+            <div className="flex flex-col">
               <Text>Created at: {formatDateTime(createdAt)}</Text>
               {updatedAt !== createdAt && (
                 <Text>Updated at: {formatDateTime(updatedAt)}</Text>
               )}
 
-              <Text>Author Id: {authorId}</Text>
-            </Wrap>
+              <Text>Author: {userPost.name}</Text>
+              <Text>Post Id: {id}</Text>
+            </div>
           </ModalBody>
           <ModalFooter>
             <Button

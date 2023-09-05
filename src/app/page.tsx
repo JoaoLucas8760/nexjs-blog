@@ -79,6 +79,7 @@ export default function Posts() {
     }
   }
 
+  console.log(posts);
   return (
     <main className="flex justify-center h-full  ">
       <div className="flex w-full  flex-col gap-4 bg-gray-950  border-gray-800 p-8 h-full md:w-[51rem] md:border">
@@ -113,6 +114,7 @@ export default function Posts() {
                       refetchmypost={myposts_refetech}
                       createdAt={post.created_at}
                       updatedAt={post.updated_at}
+                      userPost={post.user}
                     />
                   ))}
                 </div>
@@ -134,6 +136,7 @@ export default function Posts() {
                       refetchmypost={myposts_refetech}
                       createdAt={post.created_at}
                       updatedAt={post.updated_at}
+                      userPost={post.user}
                     />
                   ))}
                 </div>
